@@ -15,8 +15,9 @@ const NotesPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(notesThunk.fetchNotes());
-    console.log('fetchNotes');
+    if(myNotes.length === 0){
+      dispatch(notesThunk.fetchNotes());
+    }
   }, []);
 
   const deleteNote = (id: number) => {
